@@ -27,11 +27,8 @@ function switchTab(newTab) {
             searchForm.classList.add("active");
         }
         else {
-            //main pehle search wale tab pr tha, ab your weather tab visible karna h 
             searchForm.classList.remove("active");
             userInfoContainer.classList.remove("active");
-            //ab main your weather tab me aagya hu, toh weather bhi display karna poadega, so let's check local storage first
-            //for coordinates, if we haved saved them there.
             getfromSessionStorage();
         }
     }
@@ -51,7 +48,7 @@ searchTab.addEventListener("click", () => {
 function getfromSessionStorage() {
     const localCoordinates = sessionStorage.getItem("user-coordinates");
     if(!localCoordinates) {
-        //agar local coordinates nahi mile
+        //if we dont find the local coordinates
         grantAccessContainer.classList.add("active");
     }
     else {
@@ -118,7 +115,7 @@ function getLocation() {
         navigator.geolocation.getCurrentPosition(showPosition);
     }
     else {
-        //HW - show an alert for no gelolocation support available
+        alert("No geolocation available");
     }
 }
 
